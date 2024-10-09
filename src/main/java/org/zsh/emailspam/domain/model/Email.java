@@ -2,6 +2,9 @@ package org.zsh.emailspam.domain.model;
 
 import org.zsh.emailspam.domain.enums.EmailStatus;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class Email {
 
     private String sender;
@@ -9,14 +12,18 @@ public class Email {
     private String email;
     private String subject;
     private String body;
+    private LocalDateTime sentAt;
     private EmailStatus status;
 
-    public Email(String sender, String receiver, String email, String subject, String body, EmailStatus status) {
+    public Email (){}
+
+    public Email ( String sender, String receiver, String subject, String body, LocalDateTime sentAt, EmailStatus status ) {
         this.sender = sender;
         this.receiver = receiver;
-        this.email = email;
+
         this.subject = subject;
         this.body = body;
+        this.sentAt = sentAt;
         this.status = status;
     }
 
@@ -36,14 +43,6 @@ public class Email {
         this.receiver = receiver;
     }
 
-    public String getEmail () {
-        return email;
-    }
-
-    public void setEmail ( String email ) {
-        this.email = email;
-    }
-
     public String getSubject () {
         return subject;
     }
@@ -60,9 +59,18 @@ public class Email {
         this.body = body;
     }
 
+    public LocalDateTime getSentAt () {
+        return sentAt;
+    }
+
+    public void setSentAt ( LocalDateTime sentAt ) {
+        this.sentAt = sentAt;
+    }
+
     public EmailStatus getStatus () {
         return status;
     }
+
     public void setStatus ( EmailStatus status ) {
         this.status = status;
     }
